@@ -1,0 +1,133 @@
+{
+  "popular": [
+    {
+      "name": "Pull Him Out",
+      "icon": "https://imgs2.dab3games.com/pull-him-out-game.png",
+      "url": "https://lagged.com/games/play2/pull-him-out-5/"
+    },
+    {
+      "name": "Knife Hit",
+      "icon": "https://imgs2.dab3games.com/knife-hit-2-game.png",
+      "url": "https://lagged.com/api/play2/knife-hit-2g/"
+    },
+    {
+      "name": "Helix Jump",
+      "icon": "https://play-lh.googleusercontent.com/U51SuEi--l_p_IcWu0Ok1Mj6lVD9cykaP_-5iuaXweJhaZSLbwfE5ISYiPYy6U8l2LQ",
+      "url": "https://lagged.com/api/play2/helix-jump/"
+    },
+    {
+      "name": "Color Pump",
+      "icon": "https://imgs2.dab3games.com/color-pump-game41.png",
+      "url": "https://lagged.com/games/play2/color-pump23/"
+    },
+    {
+      "name": "Balloon Ride",
+      "icon": "https://imgs2.dab3games.com/balloon-ride-game.png",
+      "url": "https://lagged.com/api/play2/balloon-ride/"
+    },
+    {
+      "name": "Hyper Hockey",
+      "icon": "https://imgs2.dab3games.com/hyper-hockey-game.png",
+      "url": "https://lagged.com/api/play2/hyper-hockey/"
+    },
+   
+    {
+      "name": "Gate Runner",
+      "icon": "https://imgs2.dab3games.com/gate-runner-game.png",
+      "url": "https://lagged.com/api/play2/gate-runner/"
+    },
+    {
+      "name": "Infinite Jumper",
+      "icon": "https://imgs2.dab3games.com/infinite-jumper-game.png",
+      "url": "https://lagged.com/api/play2/infinite-jumper/"
+    }
+  ],
+
+  "trend": [
+    {
+      "name": "Hyper Hockey",
+      "icon": "https://imgs2.dab3games.com/hyper-hockey-game.png",
+      "url": "https://lagged.com/api/play2/hyper-hockey/"
+    },
+    {
+      "name": "Helix Jump",
+      "icon": "https://play-lh.googleusercontent.com/U51SuEi--l_p_IcWu0Ok1Mj6lVD9cykaP_-5iuaXweJhaZSLbwfE5ISYiPYy6U8l2LQ",
+      "url": "https://lagged.com/api/play2/helix-jump/"
+    },
+    {
+      "name": "Infinite Jumper",
+      "icon": "https://imgs2.dab3games.com/infinite-jumper-game.png",
+      "url": "https://lagged.com/api/play2/infinite-jumper/"
+    },
+    {
+      "name": "Pull Him Out",
+      "icon": "https://imgs2.dab3games.com/pull-him-out-game.png",
+      "url": "https://lagged.com/games/play2/pull-him-out-5/"
+    },
+    {
+      "name": "Balloon Ride",
+      "icon": "https://imgs2.dab3games.com/balloon-ride-game.png",
+      "url": "https://lagged.com/api/play2/balloon-ride/"
+    },
+   
+    {
+      "name": "Knife Hit",
+      "icon": "https://imgs2.dab3games.com/knife-hit-2-game.png",
+      "url": "https://lagged.com/api/play2/knife-hit-2g/"
+    },
+    {
+      "name": "Color Pump",
+      "icon": "https://imgs2.dab3games.com/color-pump-game41.png",
+      "url": "https://lagged.com/games/play2/color-pump23/"
+    },
+    {
+      "name": "Gate Runner",
+      "icon": "https://imgs2.dab3games.com/gate-runner-game.png",
+      "url": "https://lagged.com/api/play2/gate-runner/"
+    }
+  ],
+
+  "new": [
+    {
+      "name": "Infinite Jumper",
+      "icon": "https://imgs2.dab3games.com/infinite-jumper-game.png",
+      "url": "https://lagged.com/api/play2/infinite-jumper/"
+    },
+    {
+      "name": "Color Pump",
+      "icon": "https://imgs2.dab3games.com/color-pump-game41.png",
+      "url": "https://lagged.com/games/play2/color-pump23/"
+    },
+    {
+      "name": "Pull Him Out",
+      "icon": "https://imgs2.dab3games.com/pull-him-out-game.png",
+      "url": "https://lagged.com/games/play2/pull-him-out-5/"
+    },
+    {
+      "name": "Helix Jump",
+      "icon": "https://play-lh.googleusercontent.com/U51SuEi--l_p_IcWu0Ok1Mj6lVD9cykaP_-5iuaXweJhaZSLbwfE5ISYiPYy6U8l2LQ",
+      "url": "https://lagged.com/api/play2/helix-jump/"
+    },
+   
+    {
+      "name": "Gate Runner",
+      "icon": "https://imgs2.dab3games.com/gate-runner-game.png",
+      "url": "https://lagged.com/api/play2/gate-runner/"
+    },
+    {
+      "name": "Balloon Ride",
+      "icon": "https://imgs2.dab3games.com/balloon-ride-game.png",
+      "url": "https://lagged.com/api/play2/balloon-ride/"
+    },
+    {
+      "name": "Hyper Hockey",
+      "icon": "https://imgs2.dab3games.com/hyper-hockey-game.png",
+      "url": "https://lagged.com/api/play2/hyper-hockey/"
+    },
+    {
+      "name": "Knife Hit",
+      "icon": "https://imgs2.dab3games.com/knife-hit-2-game.png",
+      "url": "https://lagged.com/api/play2/knife-hit-2g/"
+    }
+  ]
+}

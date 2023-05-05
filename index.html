@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5 Games</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="games-container">
+            <div class="ad-appear">
+                <img src="assets/img/splash.gif" alt="">
+            </div>
+
+
+
+            <section class="games-wrapper">
+
+                <ul class="nav nav-pills mb-3 w-100" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link popular active" id="popular-tab" data-bs-toggle="pill"
+                            data-bs-target="#popular" type="button" role="tab">Popular</button>
+                    </li>
+
+                    <li class="">
+                        <button class="nav-link trend" id="trend-tab" data-bs-toggle="pill" data-bs-target="#trend"
+                            type="button" role="tab">Trend</button>
+                    </li>
+
+                    <li class="">
+                        <button class="nav-link new" id="new-tab" data-bs-toggle="pill" data-bs-target="#new"
+                            type="button" role="tab">New</button>
+                    </li>
+                </ul>
+
+
+                <div class="tab-content" id="pills-tabContent">
+
+
+                    <div class="tab-pane fade show active" id="popular" role="tabpanel" aria-labelledby="popular-tab">
+                        <div class="row  g-3 " id="popular-game"></div>
+                    </div>
+
+                    <div class="tab-pane fade" id="trend" role="tabpanel" aria-labelledby="trend-tab">
+                        <div class="row  g-3 " id="trend-game"></div>
+
+
+                    </div>
+                    <div class="tab-pane fade" id="new" role="tabpanel" aria-labelledby="new-tab">
+                        <div class="row  g-3 " id="new-game"></div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="bottom-bar" id="bottom-bar">
+
+
+                </div>
+                <div class="bottom-bar" id="bottom-bar1">
+
+
+                </div>
+                <div class="bottom-bar" id="bottom-bar2">
+
+
+                </div>
+
+
+            </section>
+
+
+            <!-- FOOTER SECTION START -->
+            <footer class="footer ">
+                <div class="d-flex align-items-center justify-content-between w-100 px-3">
+                    <a href="">Privacy Policy</a>
+
+                    <a href="">Term of Use</a>
+                </div>
+            </footer>
+            <!-- FOOTER SECTION END -->
+
+
+        </div>
+    </div>
+
+    <script>
+        const body = document.querySelector(".games-container");
+        const bottomBarEl = document.getElementById("bottom-bar");
+        const bottomBarEl1 = document.getElementById("bottom-bar1");
+        const bottomBarEl2 = document.getElementById("bottom-bar2");
+
+
+
+        // GETTING POPULAR GAMES
+        const popularGameEl = document.getElementById("popular-game");
+        const popularGame = async () => {
+            const data = await fetch("./games.json");
+            const resu = data.json();
+
+            const result = await resu;
+            document.getElementById("bottom-bar1").style.display = "none"
+            document.getElementById("bottom-bar2").style.display = "none"
+            const newGames = result.popular;
+
+            newGames.forEach((e) => {
+                const newDiv = document.createElement("div");
+                newDiv.className = "col-sm-4 col-6 ";
+                const newDiv2 = document.createElement("div");
+                newDiv2.classList = "game-card";
+
+                const imgDiv = document.createElement("div");
+                imgDiv.className = "img-wrap";
+
+                const newImg = document.createElement("img");
+                newImg.src = e.icon;
+                newImg.style.borderRadius = 10;
+
+                const newH4 = document.createElement("h4");
+                newH4.innerText = e.name;
+
+                const newPara = document.createElement("p");
+                newPara.innerText = "10k Player" // add api text if available in JSON or API
+
+                const newLink = document.createElement("a");
+                newLink.href = e.url;
+                newLink.innerText = "Play Game";
+
+                const iframeWrap = document.createElement("div");
+                iframeWrap.className = "iframe-wrap";
+
+                const closeButton = document.createElement("button");
+                closeButton.classList = "homeBtn"
+                const homeImg = document.createElement("img");
+                homeImg.src = "./assets/img/home.png"
+
+                closeButton.appendChild(homeImg);
+
+                const newLink2 = document.createElement("a");
+                newLink2.href = e.url;
+
+                const newImg2 = document.createElement("img");
+                newImg2.src = e.icon;
+
+                newLink2.appendChild(newImg2);
+
+                bottomBarEl1.appendChild(newLink2)
+
+
+                const iframe = document.createElement("iframe");
+                iframe.width = "100%";
+                iframe.height = "100vh"
+
+                iframeWrap.appendChild(iframe);
+                iframeWrap.appendChild(closeButton);
+
+                iframeWrap.style.display = "none";
+
+                popularGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(imgDiv).appendChild(newImg);
+                popularGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(newH4)
+                popularGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(newPara)
+                popularGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(newLink)
+
+                // newLink2.addEventListener("click", (e) => {
+                //     e.preventDefault();
+                //     alert("Hello")
+                // })
+
+
+                newLink2.addEventListener("click", (e) => {
+                    e.preventDefault();
+
+                    body.appendChild(iframeWrap);
+
+                    const iframeW = document.querySelectorAll(".iframe-wrap")
+                    iframeW.forEach((e) => {
+                        e.remove()
+                    })
+
+                    iframeWrap.style.display = "block"
+                    body.appendChild(iframeWrap)
+                    iframeWrap.appendChild(bottomBarEl1)
+                    iframeWrap.appendChild(bottomBarEl1).style.display = "flex";
+                    iframeWrap.removeChild(iframe);
+
+                    const newIframe = document.createElement("iframe");
+
+                    newIframe.src = newLink2.href;
+
+
+                    iframeWrap.insertAdjacentElement("afterbegin", newIframe)
+
+                    closeButton.addEventListener("click", () => {
+                        iframeWrap.style.display = "none"
+                        iframeWrap.appendChild(bottomBarEl).style.display = "none"
+                        body.appendChild(bottomBarEl1)
+                        body.removeChild(bottomBarEl1)
+
+                        body.removeChild(iframeWrap)
+
+                    })
+
+
+
+
+                })
+
+
+                newLink.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    iframe.src = newLink.href;
+                    body.appendChild(iframeWrap)
+                    iframe.src = newLink.href;
+                    iframeWrap.style.display = "block"
+                    body.appendChild(iframeWrap)
+                    iframeWrap.appendChild(bottomBarEl1)
+                    iframeWrap.appendChild(bottomBarEl1).style.display = "flex";
+
+                    window.history.pushState({ id: 1 }, null, "?q=123")
+
+                    closeButton.addEventListener("click", () => {
+                        iframeWrap.style.display = "none"
+                        iframeWrap.appendChild(bottomBarEl1).style.display = "none"
+                        body.appendChild(bottomBarEl1)
+
+                        body.removeChild(iframeWrap)
+
+                    })
+
+
+
+
+                })
+
+
+
+
+
+
+            })
+
+
+        }
+        popularGame();
+
+
+
+        // GETTING TREND GAMES
+        const trendGameEl = document.getElementById("trend-game");
+        const trendGame = async () => {
+            const data = await fetch("./games.json");
+            const resu = data.json();
+            const result = await resu;
+            document.getElementById("bottom-bar").style.display = "none"
+            document.getElementById("bottom-bar2").style.display = "none"
+            const newGames = result.trend;
+
+            newGames.forEach((e) => {
+                const newDiv = document.createElement("div");
+                newDiv.className = "col-sm-4 col-6 ";
+                const newDiv2 = document.createElement("div");
+                newDiv2.classList = "game-card";
+
+                const imgDiv = document.createElement("div");
+                imgDiv.className = "img-wrap";
+
+                const newImg = document.createElement("img");
+                newImg.src = e.icon;
+                newImg.style.borderRadius = 10;
+
+                const newH4 = document.createElement("h4");
+                newH4.innerText = e.name;
+
+                const newPara = document.createElement("p");
+                newPara.innerText = "10k Player" // add api text if available in JSON or API
+
+                const newLink = document.createElement("a");
+                newLink.href = e.url;
+                newLink.innerText = "Play Game";
+
+                const iframeWrap = document.createElement("div");
+                iframeWrap.className = "iframe-wrap";
+
+                const closeButton = document.createElement("button");
+                closeButton.classList = "homeBtn"
+                const homeImg = document.createElement("img");
+                homeImg.src = "./assets/img/home.png"
+
+                closeButton.appendChild(homeImg);
+
+
+                const iframe = document.createElement("iframe");
+                iframe.width = "100%";
+                iframe.height = "100vh"
+
+                iframeWrap.appendChild(iframe);
+                iframeWrap.appendChild(closeButton);
+
+
+                const newLink2 = document.createElement("a");
+                newLink2.href = e.url;
+                const newImg2 = document.createElement("img");
+                newImg2.src = e.icon;
+
+                newLink2.appendChild(newImg2);
+
+                bottomBarEl2.appendChild(newLink2)
+
+
+                iframeWrap.style.display = "none";
+
+                trendGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(imgDiv).appendChild(newImg);
+                trendGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(newH4)
+                trendGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(newPara)
+                trendGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(newLink)
+
+                newLink2.addEventListener("click", (e) => {
+                    e.preventDefault();
+
+                    body.appendChild(iframeWrap);
+
+                    const iframeW = document.querySelectorAll(".iframe-wrap")
+                    iframeW.forEach((e) => {
+                        e.remove()
+                    })
+
+                    iframeWrap.style.display = "block"
+                    body.appendChild(iframeWrap)
+                    iframeWrap.appendChild(bottomBarEl2)
+                    iframeWrap.appendChild(bottomBarEl2).style.display = "flex";
+                    iframeWrap.removeChild(iframe);
+
+                    const newIframe = document.createElement("iframe");
+
+                    newIframe.src = newLink2.href;
+
+
+                    iframeWrap.insertAdjacentElement("afterbegin", newIframe)
+
+                    closeButton.addEventListener("click", () => {
+                        iframeWrap.style.display = "none"
+                        iframeWrap.appendChild(bottomBarEl).style.display = "none"
+                        body.appendChild(bottomBarEl2)
+                        body.removeChild(bottomBarEl2)
+
+                        body.removeChild(iframeWrap)
+
+                    })
+
+
+
+
+                })
+
+
+
+
+                newLink.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    iframe.src = newLink.href;
+                    body.appendChild(iframeWrap)
+                    iframe.src = newLink.href;
+                    iframeWrap.style.display = "block"
+                    body.appendChild(iframeWrap)
+                    iframeWrap.appendChild(bottomBarEl2)
+                    iframeWrap.appendChild(bottomBarEl2).style.display = "flex"
+                    window.history.pushState({ id: 1 }, null, "?q=123")
+
+                    closeButton.addEventListener("click", () => {
+                        iframeWrap.style.display = "none"
+                        iframeWrap.appendChild(bottomBarEl2).style.display = "none"
+                        body.appendChild(bottomBarEl2)
+
+                        body.removeChild(iframeWrap)
+
+                    })
+
+                })
+
+
+            })
+
+
+        }
+        trendGame();
+
+
+        // GETTING TREND GAMES
+        const newGameEl = document.getElementById("new-game");
+        // const body = document.querySelector(".games-container")
+        const newGame = async () => {
+            const data = await fetch("./games.json");
+            const resu = data.json();
+            const result = await resu;
+            document.getElementById("bottom-bar").style.display = "none"
+            document.getElementById("bottom-bar1").style.display = "none"
+            const newGames = result.new;
+
+
+            newGames.forEach((e) => {
+
+                const newDiv = document.createElement("div");
+                newDiv.className = "col-sm-4 col-6 ";
+                const newDiv2 = document.createElement("div");
+                newDiv2.classList = "game-card";
+
+                const imgDiv = document.createElement("div");
+                imgDiv.className = "img-wrap";
+
+                const newImg = document.createElement("img");
+                newImg.src = e.icon;
+                newImg.style.borderRadius = 10;
+
+                const newH4 = document.createElement("h4");
+                newH4.innerText = e.name;
+
+                const newPara = document.createElement("p");
+                newPara.innerText = "10k Player" // add api text if available in JSON or API
+
+                const newLink = document.createElement("a");
+                newLink.href = e.url;
+                newLink.innerText = "Play Game";
+
+                const iframeWrap = document.createElement("div");
+                iframeWrap.className = "iframe-wrap";
+
+                const closeButton = document.createElement("button");
+                closeButton.classList = "homeBtn"
+                const homeImg = document.createElement("img");
+                homeImg.src = "./assets/img/home.png"
+
+                closeButton.appendChild(homeImg);
+
+
+                const iframe = document.createElement("iframe");
+                iframe.width = "100%";
+                iframe.height = "100vh"
+
+                iframeWrap.appendChild(iframe);
+                iframeWrap.appendChild(closeButton);
+
+                const newLink2 = document.createElement("a");
+                newLink2.href = e.url;
+                const newImg2 = document.createElement("img");
+                newImg2.src = e.icon;
+
+                newLink2.appendChild(newImg2);
+
+                bottomBarEl.appendChild(newLink2)
+
+                iframeWrap.style.display = "none";
+
+
+                newGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(imgDiv).appendChild(newImg);
+                newGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(newH4)
+                newGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(newPara)
+                newGameEl.appendChild(newDiv).appendChild(newDiv2).appendChild(newLink)
+
+                newLink2.addEventListener("click", (e) => {
+                    e.preventDefault();
+
+                    body.appendChild(iframeWrap);
+
+                    const iframeW = document.querySelectorAll(".iframe-wrap")
+                    iframeW.forEach((e) => {
+                        e.remove()
+                    })
+
+                    iframeWrap.style.display = "block"
+                    body.appendChild(iframeWrap)
+                    iframeWrap.appendChild(bottomBarEl)
+                    iframeWrap.appendChild(bottomBarEl).style.display = "flex";
+                    iframeWrap.removeChild(iframe);
+
+                    const newIframe = document.createElement("iframe");
+
+                    newIframe.src = newLink2.href;
+
+
+                    iframeWrap.insertAdjacentElement("afterbegin", newIframe)
+
+                    closeButton.addEventListener("click", () => {
+                        iframeWrap.style.display = "none"
+                        iframeWrap.appendChild(bottomBarEl).style.display = "none"
+                        body.appendChild(bottomBarEl)
+                        body.removeChild(bottomBarEl)
+
+                        body.removeChild(iframeWrap)
+
+                    })
+
+
+
+
+                })
+
+
+                newLink.addEventListener("click", (e) => {
+                    e.preventDefault()
+
+                    body.appendChild(iframeWrap)
+                    iframe.src = newLink.href;
+                    iframeWrap.style.display = "block"
+                    body.appendChild(iframeWrap)
+                    iframeWrap.appendChild(bottomBarEl)
+                    iframeWrap.appendChild(bottomBarEl).style.display = "flex"
+                    window.history.pushState({ id: 1 }, null, "?q=123")
+
+                    closeButton.addEventListener("click", () => {
+
+                        iframeWrap.style.display = "none"
+                        iframeWrap.appendChild(bottomBarEl).style.display = "none"
+                        body.appendChild(bottomBarEl)
+
+                        body.removeChild(iframeWrap)
+
+
+                    })
+
+                })
+
+            })
+
+
+        }
+        newGame();
+
+
+        window.addEventListener("popstate", detectHistory);
+
+        function detectHistory() {
+            let iframeWrap = document.querySelector(".iframe-wrap");
+
+            iframeWrap.remove();
+
+        }
+
+        $(window).back(function () {
+            history.pushState(
+                {
+                    'url': "index.html"
+                }, null, "index.html");
+        });
+        $(window).bind('popstate', function (event) {
+            if (event.originalEvent.state) {
+                event.originalEvent.state.url;
+            }
+        });
+    </script>
+
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+</body>
+
+</html>
